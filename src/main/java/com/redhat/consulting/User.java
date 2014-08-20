@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.redhat.consulting.util.JsonHelper;
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 @XmlRootElement(name="user")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -14,14 +14,11 @@ public class User implements Serializable {
 	
 	private static final long serialVersionUID = 706790199819637988L;
 	
-	private JsonHelper jh = null;
-
 	private String username;
 	private String firstName;
 	private String lastName;
 	
 	public User() {
-		jh = new JsonHelper();
 	}
 
 	public String getUsername() {
@@ -49,7 +46,7 @@ public class User implements Serializable {
 	}
 	
 	public String toString() {
-		return jh.toJson(this);
+		return ReflectionToStringBuilder.toString(this);
 	}
 
 }
